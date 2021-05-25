@@ -7,6 +7,7 @@ class App extends Component {
 
     this.state = {
       counter: 0,
+      error: null,
     };
   }
 
@@ -16,13 +17,28 @@ class App extends Component {
         <h1 data-test="counter-display">
           The counter is currently {this.state.counter}
         </h1>
+        {this.state.error && (
+          <p data-test="error-decrement">{this.state.error}</p>
+        )}
         <button
           data-test="increment-button"
           onClick={() => {
-            this.setState({ counter: this.state.counter + 1 });
+            this.setState({ counter: this.state.counter + 1, error: null });
           }}
         >
           Increment Counter
+        </button>
+        <button
+          data-test="decrement-button"
+          onClick={() => {
+            if (this.state.counter > 0) {              
+              this.setState({ counter: this.state.counter - 1, error: null });
+            }else{
+              this.setState({ error: "The counter can't go below zero"});
+            }
+          }}
+        >
+          Decrement Counter
         </button>
       </div>
     );

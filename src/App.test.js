@@ -70,3 +70,28 @@ test('clicking button increments counter display', () => {
 });
 
 
+test('clicking button decrement counter display', () => {
+  const counter = 7;
+  const wrapper = setup(null, { counter });
+  const button = findByTestAttr(wrapper, 'decrement-button');
+
+  button.simulate('click');
+  wrapper.update();
+
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+
+  expect(counterDisplay.text()).toContain(counter - 1);
+});
+
+test('button clicking decrement display counter does not accept counter < 0', () => {
+  const counter = 0;
+  const wrapper = setup(null, { counter });
+  const button = findByTestAttr(wrapper, 'decrement-button');
+
+  button.simulate('click');
+  wrapper.update();
+
+
+  const errorDisplay = findByTestAttr(wrapper, 'error-decrement');
+  expect(errorDisplay.text()).toContain("The counter can't go below zero");
+});
