@@ -4,5 +4,5 @@ Code for projects presented in Udemy [React Testing with Jest and Enzyme](https:
 
 
 ```bash
-npm install redux@4.0.0 react-redux@5.0.7 redux-thunk@2.2.0 axios@0.18.0 moxios@0.4.0
+npm install redux-thunk@2.2.0 axios@0.18.0 moxios@0.4.0
 ```
